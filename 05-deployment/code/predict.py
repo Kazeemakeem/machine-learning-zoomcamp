@@ -1,5 +1,4 @@
 import pickle
-
 from flask import Flask
 from flask import request
 from flask import jsonify
@@ -22,7 +21,7 @@ def predict():
 
     result = {
         'churn_probability': float(y_pred),
-        'churn': bool(churn)
+        'churn': bool(churn) # turns numpy boolean to python boolean.
     }
 
     return jsonify(result)
@@ -30,3 +29,12 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=9696)
+
+# you can run this app in the terminal with gunicorn to avoid WSGI server warning
+#  "gunicorn --bind 0.0.0.0:9696 predict:app" - lines 30-31 won't run and as a result are irrelevant with this command. You can also use waitress with "waitress-serve --listen=0.0.0.0:9696 predict:app"
+
+# Pipenv
+#     install - pip install pipenv
+#     install all your dependencies in current venv with pipenv install
+#     run pipenv install to reinstall dependencies
+#     run pipenv shell to run your package using the current venv

@@ -1,0 +1,9 @@
+ Pipenv
+     install - pip install pipenv
+     install all your dependencies in current venv with pipenv install
+     run pipenv install to reinstall dependencies
+     run pipenv shell to run your package using the current venv
+
+Docker
+    python docker image example
+        docker run -it --rm --entrypoint=bash python:3.8.12-slim
